@@ -21,13 +21,12 @@ def get(url):
     response = urllib.request.urlopen(request)
     html = response.read().decode("utf-8")
     soup=BeautifulSoup(html,"html.parser")
-    namelist=[]
-    scorelist=[]
+    movielist=[]
     for item in soup.find_all('li',class_="list-item"):
         item = str(item)
         name = re.findall(findName,item)
         score = re.findall(findScore,item)
         if len(score)==0 :
             score.append("no score by now")
-        print(name[0],score[0])
-
+        movielist.append(name[0]+" "+score[0]+"\n")
+    return movielist

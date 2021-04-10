@@ -18,19 +18,16 @@ class Application(Frame):
     def createWidgets(self):
         self.Label = Label(self, text='click the button below you can see the newest movies and their score')
         self.Label.pack()
-        self.alertButton = Button(self, text='Check', command=self.hello)
+        self.alertButton = Button(self, text='Check', command=self.data)
         self.alertButton.pack()
         self.Labe2 = Label(self, text='data from Douban')
         self.Labe2.pack()
         
-    def hello(self):
+    def data(self):
+        messagebox.showinfo('Message', get('https://movie.douban.com/cinema/nowplaying/hefei/'))
         
-        messagebox.showinfo('Message', '你猜')
-
 app = Application()
 # 设置窗口标题:
 app.master.title('movies')
 # 主消息循环:
 app.mainloop()
-get('https://movie.douban.com/cinema/nowplaying/hefei/')
-
