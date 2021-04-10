@@ -13,7 +13,7 @@ import urllib.request,urllib.error
 findName=re.compile(r'<img alt="(.*?)" class="" rel="nofollow"',re.S)
 findScore=re.compile(r'data-score="(.*?)" data-showed=',re.S)
 
-def askURL(url):
+def get(url):
     head = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
     }
@@ -21,6 +21,8 @@ def askURL(url):
     response = urllib.request.urlopen(request)
     html = response.read().decode("utf-8")
     soup=BeautifulSoup(html,"html.parser")
+    namelist=[]
+    scorelist=[]
     for item in soup.find_all('li',class_="list-item"):
         item = str(item)
         name = re.findall(findName,item)
