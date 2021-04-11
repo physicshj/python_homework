@@ -34,7 +34,7 @@ def get(url):
     response = urllib.request.urlopen(request)
     html = response.read()
     htmltext=BeautifulSoup(html,"html.parser")
-    movielist=[]
+    movielist=[] # a list stored movies' name and score
     for item in htmltext.find_all('li',class_="list-item"):
         item = str(item)
         movie=movies(item)

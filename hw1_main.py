@@ -18,19 +18,21 @@ class Application(Frame): #gui
         self.createWidgets()
 
     def createWidgets(self):
-        self.Label = Label(self, text='click the button below you will see the newest movies and their score')
+        self.Label = Label(self, text='   click the button below you will see the newest movies and their scores   \n')
         self.Label.pack()
         self.Button = Button(self, text='Check', command=self.data)
         self.Button.pack()
-        self.Labe2 = Label(self, text='data from Douban © Hongjie Fan')
+        self.Labe2 = Label(self, text='\n data from Douban © Hongjie Fan')
         self.Labe2.pack()
         
     def data(self):
-        messagebox.showinfo('movie list', movielist)
+        messagebox.showinfo('A list of movies for your reference', movielist)
 
 lists=get('https://movie.douban.com/cinema/nowplaying/hefei/')
+
 for s in lists:
-    movielist=movielist+s  #combine all elements in movielist into one string
+    movielist=movielist+s  #combine all elements in movielist into one strin
+    
 app = Application()
-app.master.title('movies')
+app.master.title('picking moive assistant')
 app.mainloop()
